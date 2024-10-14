@@ -1,0 +1,83 @@
+* Selective Changes: The git add command allows you to choose which changes you want to include in your commit. This is particularly useful if you’ve made multiple changes across different files but want to commit them separately.
+
+* If you have staged changes (added them with git add), you can unstage them without losing your work.          Here's how:
+- git reset <file>
+
+* If you want to unstage all files that you have added, use:
+- git reset
+* This will unstage all the changes in the staging area, leaving your working directory untouched.
+    
+* git reset vs git revert vs git restore
+1. git reset 
+a. git reset --soft <commit>
+What It Does: Moves the HEAD pointer to a specified commit and keeps all your changes staged.
+Use Case: Use this when you want to undo a commit but keep the changes in the staging area for potential further modifications or to commit again.
+Eg: git reset --soft HEAD~1
+
+b. git reset --hard <commit>
+What It Does: Moves the HEAD pointer to a specified commit and discards all changes in the working directory and staging area.
+Use Case: Use this when you want to completely discard changes and revert your repository to a specific state.
+Eg: git reset --hard HEAD~1
+
+2. git revert <commit>
+What It Does: Creates a new commit that undoes the changes made by a specified commit. This is a safe way to undo changes because it doesn't alter the commit history.
+Use Case: Use this when you want to reverse the effects of a specific commit while keeping the history intact.
+Eg: git revert HEAD
+
+
+3. git restore <file>
+What It Does: Used to restore files in the working directory from a specific commit or the staging area. It can discard changes to a file or restore a file to its state in a specified commit.
+Use Case: Use this when you want to discard local changes to a file or restore it to a previous state without affecting the commit history.
+Eg: git restore hello.txt
+
+* Example Scenarios
+1. Using git reset --soft: You made a commit but realize you want to change the message or add more changes. You can reset soft to the previous commit, make your changes, and then commit again.
+
+2. Using git reset --hard: You’ve made multiple commits and decide you want to completely start over from a specific point. You can reset hard to that commit, losing all changes since.
+
+3. Using git revert: You pushed a commit that introduced a bug. Instead of rewriting history, you create a new commit that undoes that change, keeping a clean commit history.
+
+4. Using git restore: You’ve modified a file but want to discard those changes and return to the last committed version. You can use restore to revert just that file.
+
+
+
+* Default Behavior of git reset: --mixed
+* Effect:
+1.Moves HEAD: It moves the HEAD pointer to the specified commit (or the previous commit if none is specified).
+2. Unstages Changes: It un-stages all changes from the staging area (index) but keeps the changes in your working directory.
+3. Working Directory: Your files will still have the changes you made, but they will not be staged for the next commit.
+
+
+Git remote -v (verbose)
+origin  https://github.com/username/repo.git (fetch)
+origin  https://github.com/username/myfork.git (push)
+In this case, you can fetch updates from the original repository while pushing your changes to your own fork.
+
+
+* Using git fetch:
+- You are working on a feature branch called feature-xyz.
+-Your colleague has pushed changes to the main branch that you want to check.
+- git fetch origin
+
+- Check what has changed:
+- git log origin/main
+
+- After reviewing, you decide whether to merge those changes into your branch:
+- git merge origin/main
+
+
+* git squash - https://www.youtube.com/watch?v=i_IpUwlueds
+
+* git config --list
+
+* set sublime as default editor for git : git config --global core.editor "subl -n -w"
+- -n: This option opens a new window.
+- -w: This option tells Git to wait for the Sublime Text window to be closed before proceeding. This is important for Git to know when you're done editing your commit message.
+
+* How to edit pushed git commit message : https://www.youtube.com/watch?v=BNF4le5X1Ms
+
+* unstage changes in last commit - git reset HEAD^1
+
+* split in interactive rebase - https://www.youtube.com/watch?v=ElRzTuYln0M
+
+* git commit --amend : to modify the current commit message 
