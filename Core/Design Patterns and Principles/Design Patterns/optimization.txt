@@ -1,0 +1,131 @@
+# Utils: Utils contain reusable code like mailSender.js: a function for sending mail.
+
+# Config: This folder contains the configure files. for example, ‘database.js’ is used to set up the database connection, and ‘Cloudinary’ is used to set up the connection to the cloud database for images and video.
+
+
+# ESLint is a static code analysis tool that checks your JavaScript code for common problems, such as syntax errors, formatting issues, code style violations, and potential bug.js
+
+
+# package-lock.json is an auto-generated file that provides a detailed, deterministic record of the dependency tree.
+It locks down the specific versions of every installed package, preventing unintended updates.
+
+
+
+# package.json serves as a manifest file for Node projects, containing metadata about the project and its dependencies.
+It includes information such as the project name, version, entry point, scripts, and dependencies.
+
+
+
+# ORM : ORM stands for Object-Relational Mapping. It is a programming technique that helps developers interact with databases in a more intuitive way. Instead of writing complex SQL queries to manipulate database records, developers can work with objects in their programming language.
+
+# How ORM Works:
+- Mapping: ORM maps database tables to classes (objects) in code. Each row in a table becomes an instance of a class, and each column becomes an attribute of that class.
+
+- CRUD Operations: With ORM, you can perform CRUD operations (Create, Read, Update, Delete) on the database using simple methods rather than SQL commands.
+
+# ODM (Object Data Modeling):
+
+- Specifically designed for NoSQL databases like MongoDB.
+- Maps database collections to JavaScript objects.
+- Handles unstructured or semi-structured data formats.
+
+
+
+
+# Sequelize is a popular ORM (Object-Relational Mapping) library for Node.js, specifically designed to work with relational databases like MySQL, PostgreSQL, SQLite, and Microsoft SQL Server. It provides an easy-to-use interface for interacting with databases through JavaScript objects, allowing developers to focus on coding rather than writing raw SQL.
+
+# Model Definition:
+- You can define models that represent database tables. Each model can have attributes that map to table columns.
+
+const User = sequelize.define('User', {
+    name: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    age: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    }
+});
+
+
+
+- Postman is great for testing and interacting with APIs, while Swagger is best for designing and documenting APIs. You can use both tools in your API development workflow: Swagger for creating and documenting the API, and Postman for testing and validating it.
+
+
+- SQL databases are better for multi-row transactions, while NoSQL is better for unstructured data like documents or JSON. SQL databases are also commonly used for legacy systems built around a relational structure. 
+
+
+
+- A migration is a file that defines changes to the database schema, such as creating, updating, or deleting tables and columns. Each migration is a step that can be applied or reverted, which makes it easier to manage changes.
+
+- Version Control: Migrations help keep track of changes over time, much like version control for code.
+
+- Each migration file has two main functions:
+* up: Defines what happens when the migration is applied (e.g., creating a table).
+* down: Defines what happens when the migration is reverted (e.g., dropping a table).
+
+
+# Use Cases
+- Initial Setup: Create the database structure when starting a new project.
+- Feature Development: Add new tables or columns as you develop new features.
+
+
+# Use Migrations When:
+
+- You need to create or modify the database schema.
+- You’re setting up a new project and establishing initial tables and relationships.
+- You want to ensure your database changes are version-controlled and reversible.
+
+# Use Models When:
+
+- You want to perform CRUD operations on existing records.
+- You’re querying data or interacting with it in your application.
+
+
+# concurrency and parallelism
+- https://medium.com/@itIsMadhavan/concurrency-vs-parallelism-a-brief-review-b337c8dac350
+
+
+
+
+- a child process refers to a process that is created by another process, known as the parent process. 
+- When a parent process creates a child process, the child inherits certain attributes from the parent, such as environment variables and open file descriptors.
+Each child process runs in its own memory space, so a crash in one process doesn’t affect the parent or other processes.
+
+
+- example: You have a large text file, and you want to count how many times certain words appear in that file. Instead of processing the entire file in one go, you can split it into chunks and use child processes to count the words in parallel.
+
+
+- Elasticsearch is a tool that helps you quickly search through large amounts of data. Think of it as a very powerful search engine that can find information in a big database super fast. It’s often used for searching text, analyzing data, and finding patterns.
+
+- Cluster: A cluster can have one or many servers (called nodes) working together to store and manage data.
+
+- Node: Each server in the cluster is called a node. Each node holds some of the data and helps process search requests.
+
+- Index: You can think of an index as a big filing cabinet that stores similar documents. For example, you might have one index for books and another for movies.
+
+- Document: It contains information in a structured format (like JSON). For example, a document for a book might include the title, author, and publication year.
+
+# Shards and Replicas:
+
+- Shards: Imagine splitting a big book into smaller chapters so it’s easier to read. Shards are pieces of an index that help with distribution and speed.
+- Replicas: These are backup copies of the shards. They ensure that your data is safe and available even if one server goes down.
+
+
+
+
+1. Process
+What It Is: A process is an instance of a program that is being executed. It has its own memory space and system resources.
+Example: When you open a web browser like Chrome, your operating system creates a new process for it. Each time you open a new tab in Chrome, it may create additional processes to manage those tabs.
+
+2. Thread
+What It Is: A thread is the smallest unit of execution within a process. A process can have multiple threads that share the same memory space but can run independently.
+Example: Within the Chrome process, each tab can be a separate thread. This means if one tab crashes, the others can still work, as they share the same resources of the Chrome process but operate independently.
+
+3.Core
+What It Is: A core is a physical part of a CPU (Central Processing Unit) that can execute instructions. Modern CPUs can have multiple cores, allowing them to perform multiple tasks simultaneously.
+Example: Think of a CPU core like a chef in a kitchen. If you have a single chef (single-core CPU), they can only prepare one dish at a time. If you have four chefs (four-core CPU), they can each work on different dishes at the same time, speeding up the cooking process.
+
+
+
