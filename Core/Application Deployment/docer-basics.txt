@@ -1,0 +1,127 @@
+- YAML is a human-readable data serialization language that is often used for writing configuration files. Depending on whom you ask, YAML stands for yet another markup language or YAML ain't markup language
+
+- When you have multiple environments, then replicate them is quite difficult so we use docker
+- We can make containers with diff configurations,  types of os, tools like node, mongo, we don't need to setup the env again and again.
+- we can easily build, destroy, deploy and share these containers on cloud
+- daemon is the tool that pulls image, create containers, scale up/down
+- docker run -it ubuntu - creates a container for ubuntu on docker desktop, ubuntu is image name (an OS)
+- whoami command
+- what we do inside ubuntu container, it is inside that only, will not affect main machine, it is isolated from main machine
+- containers - machine/laptops
+- image - os
+- os run on laptops
+- image run on container
+- we can also create custom image and publish on docker hub/aws cloud or some other cloud
+- docker container ls -a : to show all containers even if they are closed
+- docker start container_name
+- docker stop container_name
+- docker exec -it container_name bash - if we don't want to disconnect the terminal from the container(for continue using container)
+- docker images - command
+- port mapping or port exposing :
+- mailhog image
+- docker run -it -p 9000:9000  image_name :- container ka port 9000 ko mere machine ke port 9000 pe expose kardo
+- enviornment variable
+- docker run -it -p 9000:9000 -e key=value -e key=value image_name 
+- dockerize node app 
+- docker run -it -p 8000:8000 container_name
+- docker exec -it hash_code bash
+- docker run -it -e PORT=4000 -p 4000:4000 image_name
+- oder of command in Dockerfile is very important as caching happens here
+- layer caching
+- pushing custom image on docker 
+- docker compose - we can create, setup and destroy multiple containers 
+- sudo docker compose up - to run the config file and run all the services mentioned in the docker-compose.yaml and make different containers for services
+- ctrl c to exit 
+- docker compose down
+
+
+
+- docker build -t hp701/basic-express-app .
+-docker push hp701/basic-express-app
+
+- https://k21academy.com/docker-kubernetes/docker-architecture-docker-engine-components-container-lifecycle/
+- Docker Architecture and Components
+- Docker Engine Components
+- Docker Engine is the core product of Docker, including its daemon (dockerd) as well as its CLI (docker). Docker Daemon is simply a part of Docker Engine.
+
+
+- A hypervisor is a type of software that allows multiple operating systems (OS) to run on a single physical machine. Think of it like a manager that allocates resources (like CPU, memory, and storage) to different operating systems, enabling them to operate independently on the same hardware.
+- Imagine you have a powerful computer, and you want to run both Windows and Linux on it. Instead of restarting your computer each time you want to switch between them, you can use a hypervisor to run both operating systems at the same time. This way, you can use applications from both OSs without interruption.
+
+- There are mainly two types of hypervisors:
+1. Type 1 Hypervisor (Bare-Metal)
+
+- Description: This type runs directly on the physical hardware of the host machine. It doesn't require an underlying operating system.
+- Example: VMware ESXi, Microsoft Hyper-V, and Xen.
+- Use Case: Commonly used in data centers and cloud environments for better performance and efficiency.
+
+2. Type 2 Hypervisor (Hosted)
+
+- Description: This type runs on top of an existing operating system. It relies on the host OS to manage hardware resources.
+- Example: VMware Workstation, Oracle VirtualBox, and Parallels Desktop.
+Use Case: Often used for personal use or development purposes, where you need to run multiple OSs on a desktop.
+
+
+- Virtual machine vs hypervisors
+- https://www.geeksforgeeks.org/difference-between-virtual-machines-and-containers/
+
+- The kernel is a crucial part of an operating system (OS) that acts as a bridge between the hardware and the software applications. It manages system resources, such as the CPU, memory, and input/output devices, ensuring that everything runs smoothly.
+
+- Docker-compose vs dockerFile - 
+- A Dockerfile is a text document with a series of commands used to build a Docker image. Docker Compose is a tool for defining and running multi-container applications
+
+- docker image commands - https://www.knowledgehut.com/blog/devops/docker-images-command
+
+- Volume mounting 
+- data vs dump folder
+The data folder usually stores the main persistent data generated or used by the application running inside the container. For example, in a database container, this folder would contain the actual database files where your data is stored.
+The dump folder is often used for backups or exports of data.
+
+- On macOS, Docker Desktop uses HyperKit as its virtualization engine
+
+- connect two containers on same network
+
+-  first run both containers, then
+
+- docker inspect conainer1_id | grep "IPAddress"
+- docker exec -it conatiner2_id sh
+- ping container1_ip
+- vice versa
+
+
+- Alternate method 
+- https://www.digitalocean.com/community/questions/how-to-ping-docker-container-from-another-container-by-name
+
+- docker images command
+- https://www.knowledgehut.com/blog/devops/docker-images-command
+
+- docker network commands
+- https://docs.docker.com/reference/cli/docker/network/
+
+
+- docker volume commands
+- https://docs.docker.com/reference/cli/docker/volume/
+
+
+
+
+- CMD
+- Sets the default command to run when you start a container.
+- If you specify a different command when starting the container, it will replace the CMD.   
+- CMD ["echo", "Hello World"]
+- If you run the container without specifying a command, it will print "Hello World". But if you run it with docker run myimage echo Goodbye, it will print "Goodbye" instead.
+
+
+
+- ENTRYPOINT
+- Defines the main command that always runs when the container starts.
+- You can't easily replace it; it’s meant to be the main process.
+- ENTRYPOINT ["python3", "app.py"]
+- This means when you run the container, it will always execute python3 app.py.
+
+
+- Using Both Together
+- eg: ENTRYPOINT ["python3", "app.py"]
+      CMD ["--default-arg"]
+- Here, the container will run python3 app.py --default-arg by default.
+- If you run the container with different arguments, like docker run myimage --other-arg, it will execute python3 app.py --other-arg.								

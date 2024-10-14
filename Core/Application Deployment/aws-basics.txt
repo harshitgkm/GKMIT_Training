@@ -1,0 +1,61 @@
+# AWS
+- Amazon Web Services (AWS) is a cloud computing platform provided by Amazon. It offers a variety of services that help businesses and developers build, host, and manage applications without needing to invest in physical servers or infrastructure.
+
+# AWS services - 
+
+1. compute (Services that provide virtual servers and processing power)
+a. elastic compute cloud(EC2)
+- create virtual machines/servers
+
+- Use Case: A startup runs a web application on EC2 to handle fluctuating traffic without needing to maintain its own servers.
+
+
+b. lambda 
+- Runs code in response to events without provisioning servers.
+- eg: Automatically resizing images when they are uploaded to an S3 bucket.
+event driven compute service, serverless compute service, here we can write custom application code to do certain task which are very small and required to do a specific activity - for eg. you take a photograph, upload it somewhere and run a lambda function, so that it can be resized for a tableet or mobile device
+
+c. elastic beanstalk 
+- we can deploy our whole application om this
+
+
+2. storage
+a. s3(simple storage service)
+- It is a store where we can store all kinds of data(strucutured, unstructured, semi...
+)
+- Object storage service for data backup and archiving.
+- Use Case: A media company stores video files for streaming.
+
+
+
+b. elastic block store(EBS)
+- Provides block storage for use with EC2 instances.
+- Use Case: A database application uses EBS for fast and reliable storage.
+
+- This provides block storage or block volume for ec2 instance. read and write becomes fast if we attach ec2 and ebs.compute
+
+
+3. Database
+a. aurora
+b. dynamoDB
+c. RDS
+
+
+
+4. network and content delivery
+a. VPC
+- Allows you to create isolated network environments.
+A company creates a secure network for its sensitive applications.
+b. cloud front
+
+
+5. security
+a. IAM(Identity and Access Management)
+- Manages user permissions
+- Use Case: A company restricts access to sensitive data based on roles.
+
+
+
+- https://stackoverflow.com/questions/37099564/docker-how-can-run-the-psql-command-in-the-postgres-container
+- To get inside docker postgres shell : docker exec -it  <container-name> psql -U <dataBaseUserName> <dataBaseName>
+
