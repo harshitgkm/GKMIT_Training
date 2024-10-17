@@ -1,0 +1,76 @@
+
+
+# Eslint , prettier, soft delete, status code
+
+# Postman vs swagger
+# npm vs npx
+- npm (Node Package Manager) is primarily used for managing packages in your Node.js projects. You use it to install, update, or remove packages. It installs packages from the npm registry and saves them in your project's node_modules directory.
+- npx is a tool that comes with npm (version 5.2.0 and later) and allows you to execute Node packages directly without needing to install them globally. It’s especially useful for running CLI tools that you may not want to install globally on your machine.
+
+# Common packages: nodemon, Eslint, prettier, env, ORM - mongoose or sequiliuze
+# npm —save
+# package.json vs package.lock.json
+# dev dependency
+
+
+# table- snake case
+# model- pascal case
+# in sequilize (reverse naming convention )
+
+# Git branches:
+
+- feature
+- fix
+- docs
+- hotfix - immediate fix
+- release
+- chore - for comments
+- Prod branch, release 
+- migration name: create-table-users
+- seed in sequilize 
+- functions name -  camel case
+- file name - kebab case
+- http-status-code package
+- nvm install --lts
+- nvm use --lts
+- nvm list
+
+# Node project setup:
+
+1. node(LTS)
+2. npm init(LTS)
+3. express
+4. git init
+5. .gitignore
+6. .env
+7. .env.sample - add new variable which we use in env
+8. Litnter(ESLint) and formatter(Prettier) - .prettierrc and .eslint.config.js in root folder 
+* Initial commit 
+
+
+
+9. Folder setup
+10. src and tests
+* Inside src:
+- index.js
+- routes - resources.route.js(eg: users.route.js) , index.js ….only include middleware, flow : 1. validators, 2. controllers,  no services
+- controller - always include try and catch -  resouces.controller.js 
+- services - business logic - in unit test write try catch else ignore — resouces.service.js - function name: (eg: create)
+- helpers - functions and utility functions — resources.helper.js, common.helper.js
+- config - redis(eg: redis.js), mongo connection (eg: database.js)
+- models - 
+- middlewares - auth.middleware.js
+- serializers - users.serializers.js - standard conventions where we return response (called in services, services returns serializeed data)
+- validators - same standard
+- utils: aws.js, jwt.js - (third party services)
+- swagger(optional) - swagger.yaml
+
+* Inside tests folder:
+- test file 
+
+
+* Commit : Folder structure….. inside every folder make .gitkeep file and push the commit 
+
+
+
+
