@@ -125,3 +125,148 @@ The dump folder is often used for backups or exports of data.
       CMD ["--default-arg"]
 - Here, the container will run python3 app.py --default-arg by default.
 - If you run the container with different arguments, like docker run myimage --other-arg, it will execute python3 app.py --other-arg.								
+
+
+
+Dockerfile
+
+Purpose: A Dockerfile is a script containing a series of instructions on how to build a Docker image. It defines the environment, including the operating system, application code, dependencies, and configurations needed to run an application.
+Usage: You use a Dockerfile when you want to create a custom image for your application. For example, if you need to install specific libraries or configure a web server, you would specify those steps in the Dockerfile.
+
+
+docker-compose.yml
+
+Purpose: A docker-compose.yml file is used to define and run multi-container Docker applications. It allows you to configure services, networks, and volumes in a single file, making it easier to manage complex applications that involve multiple containers.
+Usage: You use docker-compose.yml when you need to run multiple services that work together. For instance, a web application might require a database and a caching service, which you can define in a single docker-compose.yml file.
+
+Key Differences
+* Function: Dockerfile builds images; docker-compose.yml manages containers.
+* Scope: A Dockerfile focuses on a single service (one image), while docker-compose.yml can define multiple services (multiple containers).
+* Execution: You build an image using docker build with a Dockerfile. You start services defined in docker-compose.yml using docker-compose up.
+
+
+While both are integral to Docker workflows, they are not interchangeable. You can't define multi-container setups in a Dockerfile, and you can't create images directly with docker-compose.yml. Instead, they complement each other: you use a Dockerfile to create images and then reference those images in a docker-compose.yml file to run your application.
+
+
+
+Docker Image
+* What it is: An image is like a blueprint or a recipe. It contains everything needed to create a container, including the operating system, application code, libraries, and dependencies.
+* Analogy: Think of a Docker image as a cake recipe. The recipe has all the ingredients and instructions needed to make the cake, but you can’t eat it until you actually bake it.
+Docker Container
+* What it is: A container is a running instance of an image. It’s the actual application in action, like when the cake is baked and ready to serve.
+* Analogy: Continuing with the cake analogy, the container is the actual cake you baked from the recipe. It’s the physical result that you can slice and serve.
+
+
+Example
+1. Docker Image:
+    * You might have a Docker image named my-web-app. This image contains everything needed to run your web application, such as the web server, application code, and libraries.
+2. Docker Container:
+    * When you run this image, Docker creates a container from it, like baking the cake. You might have several containers running from the same image, each serving different users or purposes (like multiple cakes baked from the same recipe).
+
+Summary
+* Image: The static blueprint or recipe (e.g., my-web-app).
+* Container: The live, running version of that image (e.g., the baked cake).
+
+
+
+
+
+
+Week 4
+Monday
+
+Eslint, prettier
+Polling
+Folder structure
+ECMA
+Config, .husky, constants, helpers, consumers, routers, middleware, migration, models, schedulers, services, serializers, templates, utils, validators, , templates, swaggers
+Folder hierarchy
+Express
+https://www.geeksforgeeks.org/difference-between-package-json-and-package-lock-json-files/
+ORM 
+Sequilize ORM
+When to use: SQL vs. NoSQL 
+No of. Databases in Redis
+Execution flow in queries. 
+Indexing
+
+
+Git reset
+Git reset —hard
+Git rebase
+Git force push
+Squash and merge
+Interactive rebase
+Git remote -v (verbose)
+(fetch): This URL is used when you want to retrieve changes from the remote repository. It tells Git where to look when you run commands like git pull or git fetch.
+(push): This URL is used when you want to send your local changes to the remote repository. It tells Git where to push your commits when you run git push.
+https://phoenixnap.com/kb/sudo-rm-rf 
+Git reflog
+Diversions
+Git restore —staged  .
+https://www.pluralsight.com/resources/blog/cloud/git-terms-explained
+https://www.geeksforgeeks.org/30-most-important-git-terminologies-that-developers-must-know/
+https://www.javatpoint.com/git-terminology
+
+
+Tuesday
+
+Migration
+Migration vs model
+Optimisation 
+LLD - code(complexity, concurrency and parallelism, unnecessary await), query (subquery, use views, index, least use of select *, avoid relational operations in nosql, aggregation)
+concurrency vs parallelism(always performed with multiple threads)
+Promises/Async & parallels
+Child process for parallelism
+
+HLD - 	
+Redis
+Elastic search
+
+Threads, processes, multithreading, cores
+
+Wednesday
+AWS basics
+EC2
+Basic deployment - git clone, copy, ecr 
+S3 -storage service, static 
+Volume mounting
+Yaml file
+Logging and different types of logs
+
+
+Thursday
+Docker 
+Docker engine and its components
+https://k21academy.com/docker-kubernetes/docker-architecture-docker-engine-components-container-lifecycle/
+Docker daemon
+Virtual machine vs container 
+kernel, hypervisor
+Docker-compsoe vs dockeFile - A Dockerfile is a text document with a series of commands used to build a Docker image. Docker Compose is a tool for defining and running multi-container applications
+Dockerfile keywords
+https://www.knowledgehut.com/blog/devops/docker-images-command
+Docker start container_name
+Docker stop container_name
+Docker run
+Docker nw types 
+Network cmds 
+Overlay nw 
+Host nw 
+Docker volume and its commands 
+argument in dicker file 
+pgadmin postgres redis  in docker-	compse.yaml
+Docker redis mongo gui
+Read about everything in yaml file 
+
+https://k21academy.com/docker-kubernetes/docker-architecture-docker-engine-components-container-lifecycle/
+https://medium.com/@augustineozor/understanding-docker-bridge-network-6e499da50f65
+https://medium.com/@williehung/persisting-data-using-docker-volume-and-bind-mount-52a8cb42f4f0
+https://docs.docker.com/get-started/docker_cheatsheet.pdf
+https://docs.docker.com/engine/network/
+https://medium.com/@anshita.bhasin/a-step-by-step-guide-to-create-dockerfile-9e3744d38d11
+https://www.freecodecamp.org/news/what-is-docker-compose-how-to-use-it/
+https://www.freecodecamp.org/news/docker-mount-volume-guide-how-to-mount-a-local-directory/
+
+
+
+
