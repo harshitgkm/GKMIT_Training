@@ -74,3 +74,125 @@
 
 
 
+
+- EsLint and Prettier : https://nafeu.medium.com/automatic-code-linting-formatting-with-eslint-and-prettier-in-sublime-text-3-75c507cf9a0d
+- https://eslint.org/docs/latest/use/getting-started
+ 
+- docker-compose run app npx sequelize-cli db:migrate --config src/config/config.json
+
+
+// module.exports = {
+//   development: {
+//     username: 'pgsql',
+//     password: '12345678',
+//     database: 'template1',
+//     host: '127.0.0.1',
+//     dialect: 'postgres'
+//   }
+// };
+
+
+
+# Thursday
+- Name change sequelize
+- Promise.reject
+- Promise.All()
+- Paranoid: true sequelize
+- __prototype js	
+- Git hooks
+
+
+- psql --username pgsql
+
+- docker exec -it postgres psql -U pgsql -d
+- docker exec -it <container_name_or_id> psql -U <username> -d <database_name>
+
+
+
+
+- SELECT column_name, data_type 
+  FROM information_schema.columns 
+  WHERE table_name = '<table_name>';
+
+- Run specific. Migration: npx sequelize-cli db:migrate --name
+
+- CRUD migrations.
+- https://dev.to/adefam/create-update-add-and-delete-sequelize-migration-eoa
+
+
+
+
+- Seed:
+- npx sequelize-cli seed:generate --name demo-user
+
+
+
+- Create first model: npx sequelize-cli model:generate --name User --attributes firstName:string,lastName:string,email:string
+- Edit migration file 
+
+- Run migration: npx sequelize-cli db:migrate --config src/config/database.js
+
+- Undo last migration: npx sequelize-cli db:migrate:undo --config src/config/database.js
+
+
+
+- To see specific table in docker postgres: - SELECT column_name, data_type FROM information_schema.columns WHERE table_name = '<table_name>';
+
+
+- many to many relations in sql queries with example, use case with respect to postgres in simple lang.
+- lazy loading and eager
+
+
+# Associations:
+1. One-to-One Association
+-  User.hasOne(Profile);
+-  Profile.belongsTo(User);
+
+- Student.belongsToMany(Course, { through: 'Enrollments' });
+- Course.belongsToMany(Student, { through: 'Enrollments' });
+
+
+
+- In the context of SQL databases, paranoids refers to a specific design pattern used to manage soft deletions. This pattern involves keeping records in the database even after they are "deleted," typically by marking them with a flag instead of removing them entirely. - This allows for data recovery and auditing.
+
+- Soft Deletion: Instead of deleting a record, you mark it as deleted using a boolean column (e.g., is_deleted or deleted_at).
+- Data Recovery: Since the data is not actually removed, it can be restored if needed.
+
+
+# Example
+- Let's say you have a Users table. Here’s how it might look:
+
+- Users Table
+ id	username	email	is_deleted	deleted_at
+ 1	alice	alice@example.com	false	NULL
+ 2	bob	bob@example.com	true	2024-01-10 10:00:00
+ 3	charlie	charlie@example.com	false	NULL
+
+Implementation
+1. Creating the Table with Soft Delete Columns
+
+- CREATE TABLE Users ( id SERIAL PRIMARY KEY, username VARCHAR(50), email VARCHAR(100), is_deleted BOOLEAN DEFAULT FALSE, deleted_at TIMESTAMP NULL );
+
+2. Inserting Data
+
+- INSERT INTO Users (username, email) VALUES ('alice', 'alice@example.com');
+- INSERT INTO Users (username, email) VALUES ('bob', 'bob@example.com');
+
+
+3. Marking a User as Deleted
+- Instead of deleting a user, you update the is_deleted flag:
+
+- UPDATE Users
+  SET is_deleted = true, deleted_at = NOW() 
+  WHERE id = 2;  -- Mark Bob as deleted;
+
+
+4. Querying Active Users
+-  SELECT * FROM Users
+- WHERE is_deleted = false;
+
+
+
+
+
+
