@@ -269,4 +269,66 @@ https://www.freecodecamp.org/news/docker-mount-volume-guide-how-to-mount-a-local
 
 
 
+------
+Docker
+
+1. docker compose build
+* What It Does: This command builds the images defined in your docker-compose.yml file. It looks for a Dockerfile in the specified build context and creates images based on the instructions in the Dockerfile.
+*    Use Case: Use this command when you want to manually build the images without starting the containers. This is useful for debugging or when you've made changes to your Dockerfile or application code and want to ensure the images are rebuilt.
+
+2. docker compose up
+* What It Does: This command starts the services defined in your docker-compose.yml file. If the images do not exist, it will automatically call docker compose build before starting the containers. It will also create the containers if they do not exist.
+
+* Execution Order: You usually run this command after building your images (if needed). If you just want to run everything in one command, docker compose up will handle building as well.
+
+3. docker build -t image_name
+* What It Does: This command builds a Docker image from a Dockerfile. The -t flag tags the image with a name (and optionally a version).
+* Execution Order: Typically used when you want to build an image independently of any Compose setup.
+
+
+4. docker run -p 3000:3000 image_name
+* What It Does: This command runs a container from a specified image. The -p flag maps the host port (3000) to the container port (3000), allowing you to access services running in the container from your host machine.
+
+1. With Both COPY Commands:
+    * You build your Docker image.
+    * Change app.js (but keep package.json the same).
+    * Build again: Only the code is copied, dependencies stay cached.
+    * Result: Faster build because npm install is not run again.
+2. With Just COPY . .:
+    * You build your Docker image.
+    * Change app.js.
+    * Build again: Everything is copied again, including package.json, and npm install runs.
+    * Result: Slower build because it reinstalls dependencies every time.
+
+When npm install Runs
+* npm install is run during the build process: When you use the RUN npm install command in your Dockerfile, it installs the dependencies listed in package.json.
+
+
+
+if you make changes to your code, you need to rebuild your Docker image to see those changes reflected in the container. Here's how it works:
+
+After building an image, if you change app.js say, then
+docker build -t your-image-name .             - same image is overwritten
+docker run -p 3000:3000 your-image-name
+**  ◦   This will start a new container with your updated code.
+
+If you're using Docker Compose, you can also use:
+docker-compose up --build
+
+
+
+EXPOSE
+* The EXPOSE command serves as documentation for anyone who looks at the Dockerfile. It indicates which ports the application inside the container is expected to use. For example, EXPOSE 3000 tells users that the application listens on port 3000.
+
+
+******* connect your Node.js application to a MongoDB database
+
+
+***** commands 
+
+docker exec -it calculator /bin/sh
+
+1. curl http://localhost:4000/items
+2. curl -H "email: amsesf@email.com" http://localhost:3000/api/operations
+
 
